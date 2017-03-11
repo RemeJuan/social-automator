@@ -1,0 +1,38 @@
+{
+  "name": "social-automater",
+  "version": "1.0.0",
+  "description": "A small node application to use to automate repetitive interactions on certain social networks.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "git push production HEAD:master -f",
+    "serve": "nodemon --ignore /**/cookies/*"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "base64-img": "^1.0.3",
+    "body-parser": "^1.17.1",
+    "download-file": "^0.1.5",
+    "express": "^4.14.1",
+    "instagram-private-api": "^0.5.15",
+    "jimp": "^0.2.27",
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.11",
+    "mongoose": "^4.8.5",
+    "node-fetch": "^1.6.3",
+    "nodemon": "^1.11.0",
+    "request": "^2.80.0",
+    "twit": "^2.2.5",
+    "unique-random-array": "^1.0.0",
+    "youtube-playlist-info": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.14.1",
+    "eslint-plugin-node": "^3.0.5"
+  },
+  "engines": {
+    "node": ">=7.60.0"
+  }
+}
