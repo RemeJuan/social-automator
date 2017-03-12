@@ -25,7 +25,7 @@ function likeOrCommentInsta() {
   const rand = (Math.random() * 10);
   const method = rand <= 5 ? findandLikeTag : findAndCommentTag;
 
-  return method();
+  return method(createSession);
 }
 
 module.exports = {

@@ -1,5 +1,4 @@
 const Client = require('instagram-private-api').V1;
-const {createSession} = require('./instagram');
 const { ranDom } = require('./general.js');
 const config = require('../config');
 const { Feed, Comment } = Client;
@@ -8,7 +7,7 @@ const { queryString, blockedTags, comments } = require('./strings');
 
 const blocked = new Set([...config.blacklist]);
 
-function findAndCommentTag() {
+function findAndCommentTag(createSession) {
   createSession()
     .then(session => {
       const tag = ranDom(queryString).replace('#', '');

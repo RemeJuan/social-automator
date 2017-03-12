@@ -1,11 +1,10 @@
 const Client = require('instagram-private-api').V1;
-const {createSession} = require('./instagram');
 const { ranDom } = require('./general.js');
 const { Feed, Like } = Client;
 
 const { queryString, blockedTags } = require('./strings');
 
-function findandLikeTag() {
+function findandLikeTag(createSession) {
   createSession()
     .then(session => {
       const tag = ranDom(queryString).replace('#', '');
