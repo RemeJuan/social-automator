@@ -6,7 +6,7 @@ const { user, pass } = config.igauth;
 
 const Client = require('instagram-private-api').V1;
 const device = new Client.Device(user);
-const storage = new Client.CookieFileStorage(`${global.base}/remejuan/cookies/${user}.json`);
+const storage = new Client.CookieFileStorage(`${global.base}/cookies/${user}.json`);
 let session;
 
 function createSession() {

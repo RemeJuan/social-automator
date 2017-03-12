@@ -5,7 +5,7 @@ const { Feed } = Client;
 
 const { ranTag, imageTweet } = require('./general.js');
 
-const accountId = '1549794671';
+const accountId = 'ACCOUNT_ID';
 
 function tweetIgPhoto() {
   createSession()
@@ -32,7 +32,7 @@ function tweetIgPhoto() {
     })
     .then(insta => {
       if (!insta.image) return console.log('No image to insta', insta.image);
-      
+
       const { tags, title, url } = insta;
       const prefix = title.replace(/@/g, '');
       const tag = `#lususfit`;
