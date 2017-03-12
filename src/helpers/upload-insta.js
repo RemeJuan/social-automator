@@ -3,23 +3,11 @@ const {createSession} = require('./instagram');
 const fs = require('fs');
 const request = require('request');
 const Jimp = require('jimp');
-const { remejuan, markPostAsPosted } = require('./dbconnect');
-
-const moment = require('moment-timezone');
-
-moment.tz.setDefault('Africa/Johannesburg');
-
-function checkForNewPosts() {
-  return remejuan.findOne({
-    dateTime: { $lte: moment() },
-    network: 'instagram',
-    posted: false,
-  })
-  .then(res => res);
-}
+const { checkForNewPosts } = require('./general');
+const { schedule, markPostAsPosted } = require('./dbconnect');
 
 function uploadToInstagram(link, caption) {
-  const filePath = `${global.base}/remejuan/uploads/`;
+  const filePath = `${global.base}/uploads/`;
 
   const download = function(uri, filename, callback) {
     request.head(uri, () => {
@@ -59,7 +47,7 @@ function uploadToInstagram(link, caption) {
 }
 
 function instaImage() {
-  checkForNewPosts()
+  checkForNewPosts(schedule,'instagram')
   .then(res => {
     if(res) return uploadToInstagram(res.media, res.text).then(markPostAsPosted(res));
     return console.log('No new images to insta');
