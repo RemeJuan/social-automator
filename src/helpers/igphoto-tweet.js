@@ -14,25 +14,23 @@ function tweetIgPhoto() {
 
     return feed.get()
     .then(results => {
+      if(!results) return tweetIgPhoto();
 
-      const images = results.map(result => {
-        const caption = result._params.caption;
-        const firstTag = caption.indexOf('#');
-        const title = caption.slice(0, firstTag - 1);
-        const tags = caption.slice(firstTag).split(' ');
+      const result = ranDom(results);
 
-        return Object.assign({}, {
-          title,
-          tags,
-          url: result._params.webLink,
-          image: result._params.images,
-        });
+      const caption = result._params.caption;
+      const firstTag = caption.indexOf('#');
+      const title = caption.slice(0, firstTag - 1);
+      const tags = caption.slice(firstTag).split(' ');
+
+      return Object.assign({}, {
+        title,
+        tags,
+        url: result._params.webLink,
+        image: result._params.images,
       });
-      return ranDom(images);
     })
     .then(insta => {
-      if (!insta.image) return console.log('No image to insta', insta.image);
-
       const { tags, title, url } = insta;
       const prefix = title.replace(/@/g, '');
       const tag = `#lususfit`;
@@ -47,7 +45,8 @@ function tweetIgPhoto() {
       return imageTweet({status: tweet, image: insta.image[0].url}, 'Insta Tweet')
         .then(e => console.log(e))
         .catch(e => console.log(e));
-    });
+    })
+    .catch(e => console.log(e));
   });
 }
 
