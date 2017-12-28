@@ -6,6 +6,7 @@ const { Feed, Comment } = Client;
 const { queryString, blockedTags, comments } = require('./strings');
 
 const blocked = new Set([...config.blacklist]);
+const commented = new Set([]);
 
 function findAndCommentTag(createSession) {
   createSession()
@@ -16,6 +17,11 @@ function findAndCommentTag(createSession) {
       feed.get()
       .then(res => {
         const media = ranDom(res);
+
+        if (commented.has(media.id)) return findAndCommentTag();
+
+        commented.add(media.id);
+
         const comment = ranDom(comments);
         const screenName = `@${media.account._params.username}`;
         const mediaId = `${media.id}`;
