@@ -23,6 +23,7 @@ A small express server is in place to allow easier use with free services like [
   * Comment on post
   * Create post
   * Basic logic around blacklist filters
+  * In memory tracking of posts that have already been like/commented on to prevent multiple comments.
 
 ### Details
 Basic premise works around the `strings.js` file, a JS object like:
