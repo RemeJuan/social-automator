@@ -4,13 +4,12 @@ const { ranDom } = require('./general.js');
 const { Feed } = Client;
 
 const { ranTag, imageTweet } = require('./general.js');
-
-const accountId = 'ACCOUNT_ID';
+const { tweetLength, igauth: { userId } } = require('../config');
 
 function tweetIgPhoto() {
   createSession()
   .then(session => {
-    const feed = new Feed.UserMedia(session, accountId);
+    const feed = new Feed.UserMedia(session, userId);
 
     return feed.get()
     .then(results => {
@@ -38,7 +37,7 @@ function tweetIgPhoto() {
       const tag = `#lususfit`;
       let tweet = `${prefix} ${url} ${tag}`;
 
-      while (tweet.length < 130) {
+      while (tweet.length < tweetLength && tags.length) {
         const index = ranTag(insta.tags);
         tweet = `${tweet} ${tags[index]}`;
         tags.splice(index, 1);
