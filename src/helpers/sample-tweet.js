@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const strings = require('./strings');
 
 const { ranDom, tweetNow, ranTag } = require('./general.js');
+const { tweetLength } = require("../config");
 
 function newGeneratedTweet() {
   const tags = [ ...strings.newTweetTags ];
@@ -15,7 +16,7 @@ function newGeneratedTweet() {
     const tag = `#PERSONAL_TAG_HERE`;
     let tweet = `${prefix} ${res.name} ${url} ${tag}`;
 
-    while (tweet.length < 130) {
+    while (tweet.length < tweetLength && tags.length) {
       const index = ranTag(tags);
       tweet = `${tweet} ${tags[index]}`;
       tags.splice(index, 1);

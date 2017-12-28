@@ -1,7 +1,7 @@
 const ypi = require('youtube-playlist-info');
 const strings = require('./strings');
 
-const ytAPI = 'API_KEY_HERE';
+const { ytAPI, tweetLength } = require('../config');
 
 const { ranDom, ranTag } = require('./general');
 const { tweetNow } = require('./twitter');
@@ -20,7 +20,7 @@ const youtube = () => {
     const tag = `#mtb #lususfit`;
     let tweet = `${video.title} ${url} ${tag}`;
 
-    while (tweet.length < 130) {
+    while (tweet.length < tweetLength && tags.length) {
       const index = ranTag(tags);
       tweet = `${tweet} ${tags[index]}`;
       tags.splice(index, 1);
