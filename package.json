@@ -21,7 +21,6 @@
     "moment-timezone": "^0.5.48",
     "mongoose": "^5.13.23",
     "node-fetch": "^2.7.0",
-    "request": "^2.88.2",
     "twit": "^2.2.11",
     "unique-random-array": "^1.0.1",
     "youtube-playlist-info": "^0.1.0"
