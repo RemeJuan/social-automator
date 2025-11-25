@@ -26,9 +26,10 @@
     "youtube-playlist-info": "^0.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.19.1",
-    "eslint-plugin-node": "^3.0.5",
+    "@babel/core": "^7.28.5",
+    "@babel/eslint-parser": "^7.28.5",
+    "eslint": "^8.0.0",
+    "eslint-plugin-n": "^17.23.1",
     "nodemon": "^1.19.4"
   },
   "engines": {
