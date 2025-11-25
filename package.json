@@ -21,7 +21,6 @@
     "moment-timezone": "^0.5.48",
     "mongoose": "^5.13.23",
     "node-fetch": "^2.7.0",
-    "nodemon": "^1.19.4",
     "request": "^2.88.2",
     "twit": "^2.2.11",
     "unique-random-array": "^1.0.1",
@@ -30,7 +29,8 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.19.1",
-    "eslint-plugin-node": "^3.0.5"
+    "eslint-plugin-node": "^3.0.5",
+    "nodemon": "^1.19.4"
   },
   "engines": {
     "node": ">=14.0.0"

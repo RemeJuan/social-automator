@@ -8,7 +8,7 @@
     "extends": ["eslint:recommended", "plugin:node/recommended"],
     "rules": {
       "indent": ["error", 2],
-      "semi": ["error"],
+      "semi": ["error", "always"],
       "no-console": ["off"],
       "no-underscore-dangle": [0],
       "node/exports-style": ["error", "module.exports"]
