@@ -54,12 +54,14 @@ function uploadToInstagram(link, caption) {
                   fs.unlink(jimpFile, () => null);
                 })
                 .catch(e => {
-                  console.log('POST ERROR', e.response?.body || e);
+                  const errorDetails = e?.response?.body || e?.message || e;
+                  console.log('POST ERROR', errorDetails);
                   throw e;
                 });
             })
             .catch(e => {
-              console.log('UPLOAD ERR', e.response?.body || e);
+              const errorDetails = e?.response?.body || e?.message || e;
+              console.log('UPLOAD ERR', errorDetails);
               throw e;
             });
         })
