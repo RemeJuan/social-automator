@@ -18,7 +18,7 @@
       "indent": ["error", 2],
       "semi": ["error", "always"],
       "no-console": ["off"],
-      "no-underscore-dangle": [0],
+      "no-underscore-dangle": "off",
       "n/exports-style": ["error", "module.exports"]
     },
     "globals": {}

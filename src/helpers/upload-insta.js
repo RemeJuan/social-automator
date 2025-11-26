@@ -15,12 +15,14 @@ function downloadFile(uri, destPath) {
       return new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(destPath);
         response.body.on('error', (err) => {
-          fileStream.close();
+          if (fileStream.destroy) fileStream.destroy();
+          if (response.body.destroy) response.body.destroy();
           reject(err);
         });
         fileStream.on('finish', resolve);
         fileStream.on('error', (err) => {
-          fileStream.close();
+          if (fileStream.destroy) fileStream.destroy();
+          if (response.body.destroy) response.body.destroy();
           reject(err);
         });
         response.body.pipe(fileStream);
@@ -51,11 +53,20 @@ function uploadToInstagram(link, caption) {
                   fs.unlink(file, () => null);
                   fs.unlink(jimpFile, () => null);
                 })
-                .catch(e => console.log('POST ERROR', e.response.body));
+                .catch(e => {
+                  console.log('POST ERROR', e.response?.body || e);
+                  throw e;
+                });
             })
-            .catch(e => console.log('UPLOAD ERR', e.response.body));
+            .catch(e => {
+              console.log('UPLOAD ERR', e.response?.body || e);
+              throw e;
+            });
         })
-        .catch(e => console.log('Download/Resize err', e));
+        .catch(e => {
+          console.log('Download/Resize/Upload err', e);
+          throw e;
+        });
     });
 }
 

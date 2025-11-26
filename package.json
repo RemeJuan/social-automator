@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/eslint-parser": "^7.28.5",
-    "eslint": "^8.0.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-n": "^17.23.1",
     "nodemon": "^1.19.4"
   },
