@@ -1,17 +1,25 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "babelOptions": {
+        "babelrc": false,
+        "configFile": false
+      }
+    },
     "env": {
       "browser": true,
-      "node": true
+      "node": true,
+      "es2020": true
     },
-    "plugins": ["node"],
-    "extends": ["eslint:recommended", "plugin:node/recommended"],
+    "plugins": ["n"],
+    "extends": ["eslint:recommended", "plugin:n/recommended"],
     "rules": {
-      indent: ["error", 2],
-      semi: [error],
+      "indent": ["error", 2],
+      "semi": ["error", "always"],
       "no-console": ["off"],
-      no-underscore-dangle: [0],
-      "node/exports-style": ["error", "module.exports"],
+      "no-underscore-dangle": "off",
+      "n/exports-style": ["error", "module.exports"]
     },
-    "global": {}
+    "globals": {}
 }
